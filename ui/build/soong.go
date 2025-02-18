@@ -778,6 +778,8 @@ func runSoong(ctx Context, config Config, enforceNoSoongOutput bool) {
 		targets = append(targets, config.SoongNinjaFile())
 	}
 
+	installCleanIfNecessary(ctx, config)
+
 	for _, target := range targets {
 		if err := checkGlobs(ctx, config, target); err != nil {
 			ctx.Fatalf("Error checking globs: %s", err.Error())
